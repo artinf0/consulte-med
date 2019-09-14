@@ -1,6 +1,7 @@
 package br.com.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,35 +14,36 @@ public class UsuarioService implements IServiceBase<Usuario> {
 
 	@Autowired
 	private UsuarioRepository repository;
-	
-	
+
+
 	public List<Usuario> lista() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.repository.findAll();
 	}
 
-	
-	public void edit(long id, Usuario object) {
-		// TODO Auto-generated method stub
-		
+
+	public void edit(long id, Usuario usuario) {
+		Usuario usuarioEditar = this.repository.findOne(id);
+
+		if(Objects.isNull(usuarioEditar)) {
+			usuario.setId(usuarioEditar.getId());
+		}
+
+		this.repository.save(usuario);				
 	}
 
-	
+
 	public void delete(long id) {
-		// TODO Auto-generated method stub
-		
+		this.repository.delete(id);
+
 	}
-	
+
 	public void salva(Usuario object) {
 		this.repository.save(object);
-		
+
 	}
 
-	
+
 	public Usuario getByID(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.repository.findOne(id);
 	}
-
-
 }

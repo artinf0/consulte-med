@@ -30,7 +30,10 @@ public class Paciente implements Serializable{
 	@NotBlank(message = "Nome é obrigatório")
 	public String nome;
 	
-	@NotBlank(message = "cpf é obrigatório")
+	@NotBlank(message = "CPF é obrigatório")
 	public String cpf;
+	
+	@NotBlank(message = "Email é obrigatório")
+	public String email;
 
 }
