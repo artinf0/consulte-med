@@ -44,5 +44,9 @@ public class Agendamento implements Serializable {
 	@NotEmpty(message="Data agendamento é obrigatório")
 	private Date dataAgendamento;
 	
+	@NotEmpty(message = "Médico é obrigatório")
+	private Medico medico;
 	
+	@NotEmpty(message = "Paciente é obrigatório")
+	private Paciente paciente;
 }

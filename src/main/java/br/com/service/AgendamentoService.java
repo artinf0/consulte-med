@@ -10,40 +10,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.model.Agendamento;
-import br.com.model.dto.ContatoPesquisaDTO;
 import br.com.repository.AgendamentosRepository;
-import br.com.repository.ContatosRepository;
 
 /**
  * @author carlosbarbosagomesfilho
  *
  */
 @Service
-public class AgendamentoService {
+public class AgendamentoService implements IServiceBase<Agendamento> {
 
 	@Autowired
 	private AgendamentosRepository repository;
 	
 	@Transactional(readOnly=true)
-	public List<Agendamento> list(){
+	public List<Agendamento> lista(){
 		return this.repository.findAll();
-	}
-	
+	}	
+
 	@Transactional
-	public void save(Agendamento agendamento) {
-		this.repository.save(agendamento);
-	}
-	
-	@Transactional
-	public void remove(Long id) {
-		this.repository.delete(id);
-	}
-	
-	@Transactional(readOnly=true)
-	public Agendamento getById(Long id) {
+	public Agendamento getByID (long id) {		
 		return this.repository.findOne(id);
 	}
-	
-	
+
+	@Override
+	public void edit(long id, Agendamento object) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(long id) {
+		this.repository.delete(id);
+	}
+
+	@Override
+	public void salva(Agendamento agendamento) {
+		this.repository.save(agendamento);		
+	}
 
 }

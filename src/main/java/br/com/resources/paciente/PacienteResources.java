@@ -26,9 +26,9 @@ public class PacienteResources {
 	private PacienteService service;
 
 	@PostMapping("/pacientes")	
-	public ResponseEntity<?> add(@RequestBody Paciente medico) {
-		this.service.salva(medico);
-		return ResponseEntity.ok(medico);
+	public ResponseEntity<?> add(@RequestBody Paciente paciente) {
+		this.service.salva(paciente);
+		return ResponseEntity.ok(paciente);
 	}
 
 	@DeleteMapping("/pacientes/{id}")

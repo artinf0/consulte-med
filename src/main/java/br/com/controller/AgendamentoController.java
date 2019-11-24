@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Agendamento;
-import br.com.model.Contato;
 import br.com.service.AgendamentoService;
 
 /**
@@ -39,7 +38,7 @@ public class AgendamentoController implements Serializable {
 	@GetMapping
 	public ModelAndView agendamentos() {
 		ModelAndView mv = new ModelAndView("pages/agendamento/agendamentos");
-		mv.addObject("agendamentos", this.service.list());
+		mv.addObject("agendamentos", this.service.lista());
 		return mv;
 	}
 	
@@ -58,8 +57,8 @@ public class AgendamentoController implements Serializable {
 			return novo(agendamento);
 		}
 
-		attributes.addFlashAttribute("mensagem", "Contato salvo com sucesso");
-		this.service.save(agendamento);
+		attributes.addFlashAttribute("mensagem", "agendamento salvo com sucesso");
+		this.service.salva(agendamento);
 		return mv;
 	}
 }
